@@ -1,0 +1,25 @@
+Question: Is JAVA a Pass by Value or a Pass by Reference programming language?
+
+--JAVA luôn là một ngôn ngữ lập trình truyền tham chiếu theo giá trị.
+
+What happens when you pass an object to a method in Java?
+
+-- Trong Java, khi bạn truyền một đối tượng vào một phương thức, tham số được truyền theo giá trị của tham chiếu. Điều này có nghĩa là bạn đang truyền một bản sao của tham chiếu đến đối tượng, không phải bản sao của chính đối tượng.
+
+What is the difference between passing primitives and objects in Java?
+
+--Với các kiểu nguyên thủy, Java sẽ sao chép giá trị và truyền tham số theo giá trị.
+Với đối tượng, Java sẽ sao chép giá trị của tham chiếu và truyền vào phương thức.
+
+
+Can you change the value of a primitive data type inside a method in Java?
+
+--bạn không thể thay đổi giá trị của tham số nguyên thủy trong phương thức ngoài phạm vi của phương thức đó vì giá trị của tham số đã được sao chép.
+
+Can you change the state of an object inside a method in Java?
+
+-- bạn có thể thay đổi các thuộc tính (state) của đối tượng bên trong phương thức, vì bạn đang làm việc với bản sao tham chiếu của đối tượng.
+
+What is the difference between passing an object and passing a reference to an object in Java?
+
+--khi truyền một đối tượng, Java sẽ sao chép giá trị của tham chiếu đến đối tượng đó, nghĩa là bạn không thể thay đổi tham chiếu (địa chỉ của đối tượng) nhưng có thể thay đổi các thuộc tính của đối tượng.
