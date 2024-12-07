@@ -1,25 +1,16 @@
-Question: Is JAVA a Pass by Value or a Pass by Reference programming language?
+Question:
+1. Lớp nào nên triển khai interface Comparable?
 
---JAVA luôn là một ngôn ngữ lập trình truyền tham chiếu theo giá trị.
+Lớp cần triển khai interface Comparable là lớp mà bạn muốn so sánh các đối tượng của nó theo một thứ tự nhất định. Trong trường hợp này, lớp Media hoặc các lớp con như Book, CompactDisc, DigitalVideoDisc đều có thể triển khai interface Comparable. Việc triển khai này sẽ cho phép bạn sắp xếp các đối tượng Media hoặc các loại phương tiện con theo thứ tự mong muốn (ví dụ, theo tiêu đề, giá cả).
 
-What happens when you pass an object to a method in Java?
+2. Trong các lớp đó, phương thức compareTo() nên được triển khai như thế nào để phản ánh đúng thứ tự mà chúng ta muốn?
 
--- Trong Java, khi bạn truyền một đối tượng vào một phương thức, tham số được truyền theo giá trị của tham chiếu. Điều này có nghĩa là bạn đang truyền một bản sao của tham chiếu đến đối tượng, không phải bản sao của chính đối tượng.
+Phương thức compareTo() sẽ được triển khai trong các lớp con của Media (như Book, CompactDisc, DigitalVideoDisc) để xác định cách so sánh các đối tượng của lớp.
 
-What is the difference between passing primitives and objects in Java?
+3. Liệu chúng ta có thể có hai quy tắc sắp xếp cho đối tượng (theo tiêu đề rồi đến giá và theo giá rồi đến tiêu đề) nếu sử dụng phương pháp với interface Comparable không?
 
---Với các kiểu nguyên thủy, Java sẽ sao chép giá trị và truyền tham số theo giá trị.
-Với đối tượng, Java sẽ sao chép giá trị của tham chiếu và truyền vào phương thức.
+Không, trong trường hợp sử dụng Comparable, mỗi lớp chỉ có thể có một phương thức compareTo() duy nhất, và nó sẽ xác định một quy tắc sắp xếp duy nhất. Tuy nhiên, bạn có thể thay đổi cách so sánh trong phương thức compareTo() để thực hiện việc sắp xếp theo tiêu đề trước rồi đến giá hoặc theo giá trước rồi đến tiêu đề. Để có thể sử dụng cả hai quy tắc sắp xếp (theo tiêu đề rồi đến giá và theo giá rồi đến tiêu đề), bạn sẽ cần sử dụng Comparator thay vì Comparable.
 
+4. Giả sử các DVD có quy tắc sắp xếp khác với các loại phương tiện khác, tức là theo tiêu đề, sau đó là độ dài giảm dần và cuối cùng là giá. Bạn sẽ sửa mã của mình như thế nào để cho phép điều này?
 
-Can you change the value of a primitive data type inside a method in Java?
-
---bạn không thể thay đổi giá trị của tham số nguyên thủy trong phương thức ngoài phạm vi của phương thức đó vì giá trị của tham số đã được sao chép.
-
-Can you change the state of an object inside a method in Java?
-
--- bạn có thể thay đổi các thuộc tính (state) của đối tượng bên trong phương thức, vì bạn đang làm việc với bản sao tham chiếu của đối tượng.
-
-What is the difference between passing an object and passing a reference to an object in Java?
-
---khi truyền một đối tượng, Java sẽ sao chép giá trị của tham chiếu đến đối tượng đó, nghĩa là bạn không thể thay đổi tham chiếu (địa chỉ của đối tượng) nhưng có thể thay đổi các thuộc tính của đối tượng.
+Để cho phép quy tắc sắp xếp đặc biệt cho DVD, bạn cần ghi đè phương thức compareTo() trong lớp DigitalVideoDisc

@@ -1,50 +1,57 @@
 package hust.soict.dsai.aims.store;
 
-import hust.soict.dsai.aims.disc.DigitalVideoDisc;
+import hust.soict.dsai.aims.media.Media;
+import java.util.ArrayList;
 
 public class Store {
-    private DigitalVideoDisc[] itemsInStore;
-    private int qtyInStore;
+    // Thay mảng itemsInStore[] bằng ArrayList<Media> để chứa các đối tượng Media
+    private ArrayList<Media> itemsInStore;
 
     // Constructor
-    public Store(int maxSize) {
-        itemsInStore = new DigitalVideoDisc[maxSize];  // Khởi tạo mảng chứa DVD
-        qtyInStore = 0;  // Số DVD hiện tại trong cửa hàng
+    public Store() {
+        itemsInStore = new ArrayList<Media>();  // Khởi tạo danh sách chứa các Media
     }
-
-    // Phương thức thêm DVD vào cửa hàng
-    public void addDVD(DigitalVideoDisc dvd) {
-        if (qtyInStore < itemsInStore.length) {
-            itemsInStore[qtyInStore] = dvd;
-            qtyInStore++;
-            System.out.println(" The DVD \"" + dvd.getTitle() + "\" has been added to the store.");
+    public void removeMediaByTitle(String title) {
+        Media mediaToRemove = getMediaByTitle(title);  // Tìm kiếm media theo tiêu đề
+        if (mediaToRemove != null) {
+            itemsInStore.remove(mediaToRemove);  // Xóa media nếu tìm thấy
+            System.out.println(" The media \"" + title + "\" has been removed from the store.");
         } else {
-            System.out.println("The store is full! Cannot add more DVDs.");
+            System.out.println(" No media found with title: " + title);
         }
     }
-
-    // Phương thức xóa DVD khỏi cửa hàng
-    public void removeDVD(DigitalVideoDisc dvd) {
-        for (int i = 0; i < qtyInStore; i++) {
-            if (itemsInStore[i].equals(dvd)) {
-                for (int j = i; j < qtyInStore - 1; j++) {
-                    itemsInStore[j] = itemsInStore[j + 1];  // Dịch các DVD sau vị trí đã xóa lên
-                }
-                itemsInStore[qtyInStore - 1] = null;  // Xóa DVD cuối cùng trong mảng
-                qtyInStore--;
-                System.out.println("The DVD \"" + dvd.getTitle() + "\" has been removed from the store.");
-                return;
-            }
-        }
-        System.out.println(" The DVD is not in the store.");
+    // Phương thức thêm media vào cửa hàng (bất kỳ loại Media nào: DVD, Book, CD)
+    public void addMedia(Media media) {
+        itemsInStore.add(media);
+        System.out.println(" The media \"" + media.getTitle() + "\" has been added to the store.");
     }
+    // Phương thức xóa media khỏi cửa hàng theo tiêu đề
 
-    // Phương thức in danh sách các DVD trong cửa hàng
+
+    // Phương thức xóa media khỏi cửa hàng
+
+    // Phương thức trả về tất cả media trong cửa hàng
+    public ArrayList<Media> getAllMedia() {
+        return itemsInStore;  // Trả về danh sách media trong cửa hàng
+    }
+    // Phương thức in danh sách các Media trong cửa hàng
     public void printItemsInStore() {
         System.out.println("**********************STORE**********************");
-        for (int i = 0; i < qtyInStore; i++) {
-            System.out.println((i + 1) + ". " + itemsInStore[i].toString());
+        for (int i = 0; i < itemsInStore.size(); i++) {
+            System.out.println((i + 1) + ". " + itemsInStore.get(i).toString());
         }
         System.out.println("**************************************************");
     }
+    public Media getMediaByTitle(String title) {
+        for (Media media : itemsInStore) {
+            if (media.getTitle().equalsIgnoreCase(title)) {
+                return media;  // Trả về Media nếu tiêu đề khớp
+            }
+        }
+        return null;  // Trả về null nếu không tìm thấy Media với tiêu đề đó
+    }
+
+    // Phương thức để hiển thị tất cả Media trong store
+
+
 }
