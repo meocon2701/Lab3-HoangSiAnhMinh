@@ -1,16 +1,4 @@
-Question:
-1. Lớp nào nên triển khai interface Comparable?
-
-Lớp cần triển khai interface Comparable là lớp mà bạn muốn so sánh các đối tượng của nó theo một thứ tự nhất định. Trong trường hợp này, lớp Media hoặc các lớp con như Book, CompactDisc, DigitalVideoDisc đều có thể triển khai interface Comparable. Việc triển khai này sẽ cho phép bạn sắp xếp các đối tượng Media hoặc các loại phương tiện con theo thứ tự mong muốn (ví dụ, theo tiêu đề, giá cả).
-
-2. Trong các lớp đó, phương thức compareTo() nên được triển khai như thế nào để phản ánh đúng thứ tự mà chúng ta muốn?
-
-Phương thức compareTo() sẽ được triển khai trong các lớp con của Media (như Book, CompactDisc, DigitalVideoDisc) để xác định cách so sánh các đối tượng của lớp.
-
-3. Liệu chúng ta có thể có hai quy tắc sắp xếp cho đối tượng (theo tiêu đề rồi đến giá và theo giá rồi đến tiêu đề) nếu sử dụng phương pháp với interface Comparable không?
-
-Không, trong trường hợp sử dụng Comparable, mỗi lớp chỉ có thể có một phương thức compareTo() duy nhất, và nó sẽ xác định một quy tắc sắp xếp duy nhất. Tuy nhiên, bạn có thể thay đổi cách so sánh trong phương thức compareTo() để thực hiện việc sắp xếp theo tiêu đề trước rồi đến giá hoặc theo giá trước rồi đến tiêu đề. Để có thể sử dụng cả hai quy tắc sắp xếp (theo tiêu đề rồi đến giá và theo giá rồi đến tiêu đề), bạn sẽ cần sử dụng Comparator thay vì Comparable.
-
-4. Giả sử các DVD có quy tắc sắp xếp khác với các loại phương tiện khác, tức là theo tiêu đề, sau đó là độ dài giảm dần và cuối cùng là giá. Bạn sẽ sửa mã của mình như thế nào để cho phép điều này?
-
-Để cho phép quy tắc sắp xếp đặc biệt cho DVD, bạn cần ghi đè phương thức compareTo() trong lớp DigitalVideoDisc
+Update the Aims class
+The Aims class must be updated to handle any exceptions generated when the play() methods are
+called. What happens when you don’t update for them to catch?
+- The Media class stopped working and so does other classes that use .play() (Error not handled error)
